@@ -8,11 +8,11 @@ body
 	background-color: #fafafa
 	margin: 5em 0
 	padding: 0
-	font-family: Arial
+	font-family: 'Roboto', sans-serif;
 
 .container
 	width: $width
-	height: $height
+	min-height: $height
 	display: flex
 	justify-content: center
 	align-items: center
@@ -20,14 +20,16 @@ body
 	&--textarea-top
 		background-color: #fff
 		border: 1px solid #eaeaea
+		min-height: 15em
 		& .textInput
+			border: 1px solid red
 			width: $width
-			height: 10em
 			margin: 0
-			padding: 0
-			font-family: Arial
+			padding: 1em
+			font-family: inherit
 			font-size: 1.5em
 			color: #000
+			text-indent: 2em
 	&--textarea-bottom
 		background-color: #fff
 		margin-top: 2em
@@ -42,13 +44,13 @@ span
 		background-color: yellow
 		color: black
 	&.correctWord
-		background-color: green
+		background-color: lightgreen
 .nav
-	// border: 1px solid red
 	width: $width
 	box-sizing: border-box
 	display: flex
 	justify-content: center
+	align-content: center
 	margin: 0 auto
 	position: relative
 	&--buttons
@@ -60,6 +62,24 @@ span
 			right: 2em
 			font-size: 1.5em
 			&:before
-				content: 'Błędy: '
+				content: 'Errors: '
 
+	.timer
+		min-width: 150px
+		height: 1.5em
+		line-height: 1.5em
+		font-size: 1.5em
+		position: absolute
+		left: 2em
 
+	.button--start
+		background-color: transparent
+		border: 1px solid #000
+		border-radius: 5px
+		height: 1.5em
+		text-transform: uppercase
+	& :disabled
+		border: 1px solid #dadada
+		color: #dadada
+	& :hover
+		cursor: pointer
