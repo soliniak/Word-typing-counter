@@ -1,0 +1,65 @@
+$width: 50em
+$height: 15em
+
+html
+	font-size: 62.5%
+
+body
+	background-color: #fafafa
+	margin: 5em 0
+	padding: 0
+	font-family: Arial
+
+.container
+	width: $width
+	height: $height
+	display: flex
+	justify-content: center
+	align-items: center
+	margin: 0 auto
+	&--textarea-top
+		background-color: #fff
+		border: 1px solid #eaeaea
+		& .textInput
+			width: $width
+			height: 10em
+			margin: 0
+			padding: 0
+			font-family: Arial
+			font-size: 1.5em
+			color: #000
+	&--textarea-bottom
+		background-color: #fff
+		margin-top: 2em
+		& textarea
+			width: $width
+			height: 11em
+			margin: 0
+			padding: 0
+			font-family: Arial
+span
+	&.nextWord
+		background-color: yellow
+		color: black
+	&.correctWord
+		background-color: green
+.nav
+	// border: 1px solid red
+	width: $width
+	box-sizing: border-box
+	display: flex
+	justify-content: center
+	margin: 0 auto
+	position: relative
+	&--buttons
+		margin-top: 20px
+		.wrongAnswer
+			line-height: 1.5em
+			color: red
+			position: absolute
+			right: 2em
+			font-size: 1.5em
+			&:before
+				content: 'Błędy: '
+
+
