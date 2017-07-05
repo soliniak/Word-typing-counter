@@ -26,8 +26,8 @@ $(function(){
 			let textInput = json[$selected][x];
 
 			let $textOutput = $(".textOutput").val();
-			var textInputArray = textInput.split(" ");
-			var textInputArraySave = textInput.split(" ");
+			let textInputArray = textInput.split(" ");
+			let textInputArraySave = textInput.split(" ");
 			
 			for(var i = 0; i < textInputArray.length; i++){
 				textInputArraySave[i] = "<span id=\"x"+i+"\">" + textInputArray[i] + "</span>";
@@ -102,7 +102,7 @@ $(function(){
 		let ms = 0, sec = 0, min = 0, hour = 0, msAdd, secAdd, minAdd, hourAdd, czas;
 		
 		if(startTimer == true){
-			var myInt = setInterval(function() {
+			let myInt = setInterval(function() {
 					msAdd = ms < 10 ? "0" + ms : ms;
 					secAdd = sec < 10 ? "0" + sec : sec;
 					minAdd = min < 10 ? "0" + min : min;
@@ -131,7 +131,7 @@ $(function(){
 		}
 
 		function refresh(){
-			var czas = hourAdd + ":" + minAdd + ":" + secAdd + ":" + msAdd;
+			let czas = hourAdd + ":" + minAdd + ":" + secAdd + ":" + msAdd;
 			$(".timer").text(czas);
 		}
 	}
