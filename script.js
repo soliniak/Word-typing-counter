@@ -29,11 +29,15 @@ $(function(){
 
 			let textInput = json[x];
 			var textInputArray = textInput.split(" ");
-
+			var textInputArraySave = textInput.split(" ");
+			for(var i = 0; i < textInputArray.length; i++){
+				textInputArraySave[i] = "<span id=\"x"+i+"\">" + textInputArray[i] + "</span>";
+		        textInput = textInputArraySave.join(" ");
+			}
 			callback(textInputArray, textInput);
-			$(".textInput").text(textInput);
+			$(".textInput").html(textInput);
 			
-			highlight(iG, textInputArray[iG]);
+			highlight(iG);
 			updateCounter();
 		});
 	});
@@ -69,23 +73,14 @@ $(function(){
 	function updateCounter(){
 		$(".wrongAnswer").text(wrongAnswerCounter);
 	}
+
+
 // Highlihting correct word and one ahead
-	function highlight(iG, wordFromArr, wordToMach, callback){
-		
-		$("span.nextWord").addClass("correctWord");
-
-		$('.textInput').each(function() {
-
-			let regex = new RegExp(wordFromArr);
-			let result = regex.test(textInput);
-
-			if(result){
-				$(this).html(
-					$(this).html().replace(wordFromArr, '<span class="nextWord">'+wordFromArr+'</span>')
-				)
-			}
-
-		});
+	function highlight(iG){
+		$("#x"+iG).addClass("nextWord");
+	    iG = iG -1;
+	    $("#x"+iG).removeClass("nextWord");
+	    $("#x"+iG).addClass("correctWord");
 	}
 
 // Changing typer state active / disabled
