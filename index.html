@@ -11,22 +11,39 @@
     <title> Typer </title>
   </head>
   <body>
-
-<section>
-	<div class="container container--textarea-top">
-		<div class="textInput"></div>
-	</div>
-</section>
-<section>
-	<div class="container container--textarea-bottom">
-		<textarea class="textOutput"></textarea>
-	</div>
-</section>
-<section>
-<nav class="nav nav--buttons">
-<div class="timer">00:00:00:00</div><button class="button button--start">Start</button><div class="wrongAnswer">0</div>
-</nav>
-</section>
-
+<main class="allin">
+  <div class="position-fix">
+  </div>
+  <div class="col1">
+    <section>
+    	<div class="container container--textarea-top">
+    		<div class="textInput"></div>
+    	</div>
+    </section>
+    <section>
+    	<div class="container container--textarea-bottom">
+    		<textarea class="textOutput"></textarea>
+    	</div>
+    </section>
+    <section>
+    <nav class="nav nav--buttons">
+    <div class="timer">00:00:00:00</div><button class="button button--start">Start</button><div class="wrongAnswer">0</div>
+    </nav>
+    </section>
+  </div>
+  <div class="col2">
+    <div class="options">
+      <section>
+        Choose language:
+        <select id="selectLanguage">
+          <option value="pl">Polski</option>
+          <option value="en">English</option>
+          <option value="lorem">Lorem</option>
+        </select>
+        <div class="words"></div>
+      </section>
+    </div>
+  </div>
+</main>
   </body>
 </html>

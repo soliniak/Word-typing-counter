@@ -80,3 +80,18 @@ span.correctWord {
     color: #dadada; }
   .nav :hover {
     cursor: pointer; }
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw; }
+
+.options, .position-fix {
+  position: relative;
+  padding: 2em;
+  width: 20em;
+  font-size: 1.5em; }
+
+.words {
+  padding-top: 1em; }

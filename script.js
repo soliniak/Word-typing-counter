@@ -11,25 +11,24 @@ $(function(){
 		textInputArray = value;
 		return textInputArray, textInput; 
 	};
+	
+	$(".textOutput").keypress(check);
 
+// getting text from db when start is clicked
 	$(".button--start").on("click", function (){
 
-		$("textarea.textOutput").removeAttr("disabled", "disabled");
-		$(".button--start").attr("disabled", "disabled");
-		wrongAnswerCounter = 0;
-		stop = false;
-		startTimer = false;
-
-		updateCounter(wrongAnswerCounter);
+		reseting();
+		
 		$.getJSON('text_db.json', function (json){
 
 			let x = Math.floor(Math.random() * Object.keys(json).length);
+			let $selected = $("#selectLanguage option:selected").val();
+			let textInput = json[$selected][x];
 
-			let textOutput = $(".textOutput").val();
-
-			let textInput = json[x];
+			let $textOutput = $(".textOutput").val();
 			var textInputArray = textInput.split(" ");
 			var textInputArraySave = textInput.split(" ");
+			
 			for(var i = 0; i < textInputArray.length; i++){
 				textInputArraySave[i] = "<span id=\"x"+i+"\">" + textInputArray[i] + "</span>";
 		        textInput = textInputArraySave.join(" ");
@@ -37,13 +36,14 @@ $(function(){
 			callback(textInputArray, textInput);
 			$(".textInput").html(textInput);
 			
+			words(iG, textInputArray);
 			highlight(iG);
 			updateCounter();
 		});
 	});
 	
-	$(".textOutput").keypress(check);
-
+	
+// checking if spacebar or enter is pressed then comparing words. If error update counter, if words match go to next
 	function check(e, callback) {
 
 		if(!startTimer){
@@ -51,15 +51,16 @@ $(function(){
 			timer(startTimer);
 		}
 
-	    if (e.which === 32) {
+	    if (e.which === 32 || e.which === 13) {
 	    	e.preventDefault();
+			
+			let $textOutput = $(".textOutput").val();
 
-			let textOutput = $(".textOutput").val();
-
-			if(textOutput === textInputArray[iG]){
+			if($textOutput === textInputArray[iG]){
 				$(".textOutput").val("");
 				iG++;
-		    	highlight(iG, textInputArray[iG], textOutput);
+		    	highlight(iG, textInputArray[iG], $textOutput);
+		    	words(iG, textInputArray);
 		    	typerState();
 		    } else {
 				wrongAnswerCounter += 1;
@@ -69,7 +70,7 @@ $(function(){
 	    }
 	}
 
-// Counting wrong answers	
+// Counting wrong answers (counts only when spacebar or enter is hit and words don't match)
 	function updateCounter(){
 		$(".wrongAnswer").text(wrongAnswerCounter);
 	}
@@ -83,18 +84,20 @@ $(function(){
 	    $("#x"+iG).addClass("correctWord");
 	}
 
-// Changing typer state active / disabled
+// Changing Typer state active / disabled
 	function typerState(){
 	    if(iG >= textInputArray.length){
     		console.log("End");
     		stop = true;
     		$(".button--start").removeAttr("disabled", " ");
+    		$("#selectLanguage").removeAttr("disabled", " ")
     		$("textarea.textOutput").attr("disabled", "disabled");
     		iG = 0;
     		return;
 		}   
 	}
 
+// setting timer
 	function timer(startTimer){
 		let ms = 0, sec = 0, min = 0, hour = 0, msAdd, secAdd, minAdd, hourAdd, czas;
 		
@@ -131,5 +134,19 @@ $(function(){
 			var czas = hourAdd + ":" + minAdd + ":" + secAdd + ":" + msAdd;
 			$(".timer").text(czas);
 		}
+	}
+
+// reseting when writing is done
+	function reseting(){
+		$("textarea.textOutput").removeAttr("disabled", "disabled");
+		$(".button--start").attr("disabled", "disabled");
+		$("#selectLanguage").attr("disabled", "disabled")
+		wrongAnswerCounter = 0;
+		stop = false;
+		startTimer = false;
+		updateCounter(wrongAnswerCounter);
+	}
+	function words(iG, textInputArray){
+		$(".words").text("Words: " + iG + " / " + textInputArray.length)
 	}
 });
