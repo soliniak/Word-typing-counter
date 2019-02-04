@@ -1,49 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl-PL">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <script	src="https://code.jquery.com/jquery-3.2.1.js"></script>
-	<script src="script.js"></script>
-    <title> Typer </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="script.js"></script>
+    <title>Typer</title>
   </head>
   <body>
-<main class="allin">
-  <div class="position-fix">
-  </div>
-  <div class="col1">
-    <section>
-    	<div class="container container--textarea-top">
-    		<div class="textInput"></div>
-    	</div>
-    </section>
-    <section>
-    	<div class="container container--textarea-bottom">
-    		<textarea class="textOutput"></textarea>
-    	</div>
-    </section>
-    <section>
-    <nav class="nav nav--buttons">
-    <div class="timer">00:00:00:00</div><button class="button button--start">Start</button><div class="wrongAnswer">0</div>
-    </nav>
-    </section>
-  </div>
-  <div class="col2">
-    <div class="options">
-      <section>
-        Choose language:
-        <select id="selectLanguage">
-          <option value="pl">Polski</option>
-          <option value="en">English</option>
-          <option value="lorem">Lorem</option>
-        </select>
-        <div class="words"></div>
-      </section>
-    </div>
-  </div>
-</main>
+    <main class="allin">
+      <div class="position-fix"></div>
+      <div class="col1">
+        <section>
+          <div class="container container--textarea-top">
+            <div class="textInput"></div>
+          </div>
+        </section>
+        <section>
+          <div class="container container--textarea-bottom">
+            <textarea class="textOutput"></textarea>
+          </div>
+        </section>
+        <section>
+          <nav class="nav nav--buttons">
+            <div class="timer">00:00:00:00</div>
+            <button class="button button--start">Start</button>
+            <div class="wrongAnswer">0</div>
+          </nav>
+        </section>
+      </div>
+      <div class="col2">
+        <div class="options">
+          <section>
+            Choose language:
+            <select id="selectLanguage">
+              <option value="pl">Polski</option>
+              <option value="en">English</option>
+              <option value="lorem">Lorem</option>
+            </select>
+            <div class="words"></div>
+            <div class="average"></div>
+          </section>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
